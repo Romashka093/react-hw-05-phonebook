@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import shortid from 'shortid';
 import { ContactForm } from './contactForm/ContactForm';
 import { ContactList } from './contactList/ContactList';
+import styles from './Phonebook.module.css';
 
 const contactId = shortid.generate();
 
@@ -84,7 +85,8 @@ export class Phonebook extends Component {
   render() {
     const { contacts, filter } = this.state;
     return (
-      <Fragment>
+      <main className={styles.mainContentWrapper}>
+        <h2 className={styles.title}>Phonebook</h2>
         <ContactForm id={contactId} onAddContact={this.addContact} />
         <ContactList
           length={contacts.length}
@@ -93,7 +95,7 @@ export class Phonebook extends Component {
           onDeleteContact={this.deleteContact}
           onChangeFilter={this.changeFilter}
         />
-      </Fragment>
+      </main>
     );
   }
 }

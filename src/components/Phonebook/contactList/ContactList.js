@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ListItem } from './listItem/ListItem';
 import { Filter } from '../filter/Filter';
+import styles from './ContactList.module.css';
 
 export const ContactList = ({
   length,
@@ -9,12 +10,11 @@ export const ContactList = ({
   onChangeFilter,
   value,
 }) => (
-  <>
-    <h2>Contacts:</h2>
+  <Fragment>
     {length > 0 && <Filter value={value} onChangeFilter={onChangeFilter} />}
-    <ul>
+    <ul className={styles.wrap}>
       {contacts.map(contact => (
-        <li key={contact.id}>
+        <li key={contact.id} className={styles.paperWrap}>
           <ListItem
             {...contact}
             onDeleteContact={() => onDeleteContact(contact.id)}
@@ -22,5 +22,5 @@ export const ContactList = ({
         </li>
       ))}
     </ul>
-  </>
+  </Fragment>
 );

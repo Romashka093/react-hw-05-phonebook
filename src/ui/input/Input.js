@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import style from './Input.module.css';
 
 export function Input({
   titleNameInput,
@@ -11,10 +12,11 @@ export function Input({
   required,
 }) {
   return (
-    <>
-      <label htmlFor={id}>
+    <Fragment>
+      <label htmlFor={id} className={style.label}>
         {titleNameInput}
         <input
+          className={style.input}
           type={type}
           placeholder={placeholder}
           value={value}
@@ -23,6 +25,6 @@ export function Input({
           required={required}
         />
       </label>
-    </>
+    </Fragment>
   );
 }

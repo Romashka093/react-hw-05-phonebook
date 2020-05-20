@@ -1,0 +1,13 @@
+.mainContentWrapper {
+  text-align: center;
+  margin: 0 auto 20px auto;
+}
+
+.title {
+  display: block;
+  width: 100%;
+  color: #4079e4;
+  font-size: 40px;
+  font-family: Helvetica, sans-serif;
+  margin: 20px 0;
+}
