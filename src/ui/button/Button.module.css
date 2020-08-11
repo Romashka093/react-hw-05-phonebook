@@ -11,3 +11,9 @@
   border: none;
   cursor: pointer;
 }
+
+.button:hover,
+.button:focus {
+  background-color: #2e61be;
+  transform: scale(1.1);
+}

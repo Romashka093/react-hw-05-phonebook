@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Button } from '../../../../ui/button/Button';
+import { Button } from '../../../ui/button/Button';
 // import styles from './ListItem.module.css';
 
 export function ListItem({ name, number, onDeleteContact }) {

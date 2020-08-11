@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
+import { CSSTransition } from 'react-transition-group';
 import { ContactForm } from './contactForm/ContactForm';
 import { ContactList } from './contactList/ContactList';
 import styles from './Phonebook.module.css';
+import cssTransition from '../animation/appearTransition.module.css';
 
 const contactId = shortid.generate();
 
@@ -15,6 +17,7 @@ export class Phonebook extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
+    isLoaded: false,
   };
 
   componentDidMount() {
@@ -24,6 +27,7 @@ export class Phonebook extends Component {
       const contactsState = JSON.parse(contactsInLocalStorage);
       this.setState({ contacts: contactsState });
     }
+    this.setState({ isLoaded: true });
   }
 
   componentDidUpdate(prevState) {
@@ -83,12 +87,15 @@ export class Phonebook extends Component {
   };
 
   render() {
-    const { contacts, filter } = this.state;
+    const { contacts, filter, isLoaded } = this.state;
     return (
       <main className={styles.mainContentWrapper}>
-        <h2 className={styles.title}>Phonebook</h2>
+        <CSSTransition in={isLoaded} timeout={500} classNames={cssTransition}>
+          <h2 className={styles.title}>Phonebook</h2>
+        </CSSTransition>
         <ContactForm id={contactId} onAddContact={this.addContact} />
         <ContactList
+          isLoaded={isLoaded}
           length={contacts.length}
           contacts={this.filterForContacts()}
           value={filter}
